@@ -1,33 +1,102 @@
 ---
+import Button from '../components/Button.astro';
 import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout>
-  <nav class='flex justify-between items-center mx-24 py-8'>
+  <nav class='flex justify-between items-center container mx-auto px-8 py-10'>
     <div class='rounded-full bg-cover overflow-hidden h-16 w-16'>
       <img src='/me.jpg' alt='Jesswin' />
     </div>
-    <button
-      class='rounded-full p-4 px-8 border-2 border-primary hover:bg-primary/5'
-      >Say hello</button
-    >
+
+    <div class='flex items-center gap-10 font-medium'>
+      <a href='/' class='text-primary'>Home</a>
+      <a href='#' class='text-secondary'>Projects</a>
+      <a href='#' class='text-secondary'>Blog</a>
+      <Button href='mailto:jesswinw@gmail.com'>Say hello</Button>
+    </div>
   </nav>
-  <main class='mx-24 py-12'>
-    <h1 class='text-4xl font-bold leading-[138%]'>
-      👋🏻 Hi I'm Jesswin<span class='text-[#9C9D9F]'>
-        , a Product Engineer at<br /> Ushaar Hoomans ready to help bring your <br
-        />
+  <main class='container mx-auto px-8 py-16'>
+    <h1 class='text-4xl font-medium leading-[138%]'>
+      👋🏻 Hi I'm Jesswin<span class='text-secondary'>
+        , a Product Engineer at<br class='hidden xl:block' /> Ushaar Hoomans ready
+        to help bring your <br class='hidden xl:block' />
         product visions to life.
       </span>
     </h1>
   </main>
-  <div class='grid grid-cols-3 gap-2 mt-12 w-[120%]'>
-    <div class='rounded-md bg-white h-80 border-2'></div>
-    <div class='rounded-md bg-white h-80 border-2'></div>
-    <div class='rounded-md bg-white h-80 border-2'></div>
+  <div
+    class='grid grid-cols-3 gap-2 mt-12 w-[120%] transform -translate-x-[10%] projects'
+  >
+    <div
+      class='rounded-2xl bg-white h-80 border-2 overflow-hidden transition-all hover:scale-[1.01]'
+    >
+      <img
+        src='/happy.png'
+        alt='Celebrations bot'
+        class='h-full w-full object-cover object-top'
+      />
+    </div>
+    <div
+      class='rounded-2xl bg-white h-80 border-2 overflow-hidden transition-all hover:scale-[1.01]'
+    >
+      <img
+        src='/startupsofkerala.png'
+        alt='startupsofkerala'
+        class='h-full w-full object-cover object-top'
+      />
+    </div>
+    <div
+      class='rounded-2xl bg-white h-80 border-2 overflow-hidden transition-all hover:scale-[1.01]'
+    >
+      <img
+        src='/projectclub.png'
+        alt='projectclub'
+        class='h-full w-full object-cover object-top'
+      />
+    </div>
   </div>
-  <div class='grid grid-cols-2 gap-2 mt-2 w-[120%]'>
-    <div class='rounded-md bg-white h-80 border-2'></div>
-    <div class='rounded-md bg-white h-80 border-2'></div>
+  <div
+    class='grid grid-cols-2 gap-2 mt-2 w-[120%] transform -translate-x-[10%] projects'
+  >
+    <div
+      class='rounded-2xl bg-white h-80 border-2 overflow-hidden transition-all hover:scale-[1.01]'
+    >
+      <img
+        src='/nygreeter.png'
+        alt='New year greeter'
+        class='h-full w-full object-cover object-top'
+      />
+    </div>
+    <div
+      class='rounded-2xl bg-white h-80 border-2 overflow-hidden transition-all hover:scale-[1.01]'
+    >
+      <img
+        src='/tco.png'
+        alt='The creative oracle website'
+        class='h-full w-full object-cover object-top'
+      />
+    </div>
   </div>
 </Layout>
+
+<script is:inline>
+  var t1 = gsap.timeline();
+
+  t1.from('nav', {
+    duration: 0.5,
+    y: -20,
+    opacity: 0,
+  })
+    .from('main', {
+      duration: 0.5,
+      y: 20,
+      opacity: 0,
+    })
+    .from('.projects', {
+      duration: 0.5,
+      y: 20,
+      opacity: 0,
+      stagger: 0.2,
+    });
+</script>
