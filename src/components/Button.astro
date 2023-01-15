@@ -1,20 +1,28 @@
 ---
 export interface Props {
   href?: string;
+  class?: string;
 }
 
-const { href } = Astro.props;
+const { href, class: styles } = Astro.props;
 ---
 
 {
   href ? (
     <a
       href={href}
-      class='rounded-full p-4 px-8 border-2 border-primary transition hover:bg-primary/5 hover:scale-[1.01]'>
+      class:list={[
+        'rounded-full p-4 px-8 border-2 border-primary transition hover:bg-primary/5 hover:scale-[1.01]',
+        styles,
+      ]}>
       <slot />
     </a>
   ) : (
-    <button class='rounded-full p-4 px-8 border-2 border-primary transition hover:bg-primary/5 hover:scale-[1.01]'>
+    <button
+      class:list={[
+        'rounded-full p-4 px-8 border-2 border-primary transition hover:bg-primary/5 hover:scale-[1.01]',
+        styles,
+      ]}>
       <slot />
     </button>
   )

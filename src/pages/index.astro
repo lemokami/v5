@@ -4,7 +4,9 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout>
-  <nav class='flex justify-between items-center container mx-auto px-8 py-10'>
+  <nav
+    class='flex flex-col gap-8 md:gap-0 md:flex-row justify-between items-center container mx-auto px-8 py-10'
+  >
     <div class='rounded-full bg-cover overflow-hidden h-16 w-16'>
       <img src='/me.jpg' alt='Jesswin' />
     </div>
@@ -13,11 +15,18 @@ import Layout from '../layouts/Layout.astro';
       <a href='/' class='text-primary'>Home</a>
       <a href='#' class='text-secondary'>Projects</a>
       <a href='#' class='text-secondary'>Blog</a>
-      <Button href='mailto:jesswinw@gmail.com'>Say hello</Button>
+      <Button class='hidden md:block' href='mailto:jesswinw@gmail.com'>
+        Say hello
+      </Button>
+      <a href='mailto:jesswinw@gmail.com' class='text-secondary md:hidden'
+        >Contact</a
+      >
     </div>
   </nav>
   <main class='container mx-auto px-8 py-16'>
-    <h1 class='text-4xl font-medium leading-[138%]'>
+    <h1
+      class='text-3xl md:text-4xl font-medium leading-[138%] md:leading-[138%]'
+    >
       👋🏻 Hi I'm Jesswin<span class='text-secondary'>
         , a Product Engineer at<br class='hidden xl:block' /> Ushaar Hoomans ready
         to help bring your <br class='hidden xl:block' />
@@ -26,57 +35,65 @@ import Layout from '../layouts/Layout.astro';
     </h1>
   </main>
   <div
-    class='grid grid-cols-3 gap-2 mt-12 w-[120%] transform -translate-x-[10%] projects'
+    class='grid grid-cols-1 md:grid-cols-3 grid-flow-row gap-2 mt-12 px-2 md:px-auto md:w-[120%] transform md:-translate-x-[10%] projects'
   >
-    <div
-      class='rounded-2xl bg-white h-80 border-2 overflow-hidden transition-all hover:scale-[1.01]'
-    >
-      <img
-        src='/happy.png'
-        alt='Celebrations bot'
-        class='h-full w-full object-cover object-top'
-      />
-    </div>
-    <div
-      class='rounded-2xl bg-white h-80 border-2 overflow-hidden transition-all hover:scale-[1.01]'
-    >
-      <img
-        src='/startupsofkerala.png'
-        alt='startupsofkerala'
-        class='h-full w-full object-cover object-top'
-      />
-    </div>
-    <div
-      class='rounded-2xl bg-white h-80 border-2 overflow-hidden transition-all hover:scale-[1.01]'
-    >
-      <img
-        src='/projectclub.png'
-        alt='projectclub'
-        class='h-full w-full object-cover object-top'
-      />
-    </div>
+    {
+      [
+        {
+          src: '/happy.png',
+          alt: 'Celebrations bot',
+          href: 'https://happyness.app',
+        },
+        {
+          src: '/startupsofkerala.png',
+          alt: 'startupsofkerala',
+          href: 'https://startupsofkerala.in',
+        },
+        {
+          src: '/projectclub.png',
+          alt: 'projectclub',
+          href: 'https://projectclub.vercel.app',
+        },
+      ].map((image) => (
+        <a
+          href={image.href}
+          class='rounded-2xl h-80 border-2  cursor-pointer overflow-hidden transition-all hover:scale-[1.01]'>
+          <img
+            src={image.src}
+            alt={image.alt}
+            class='h-full w-full object-cover object-top'
+          />
+        </a>
+      ))
+    }
   </div>
   <div
-    class='grid grid-cols-2 gap-2 mt-2 w-[120%] transform -translate-x-[10%] projects'
+    class='grid grid-cols-1 md:grid-cols-2 gap-2 mt-2 px-2 md:px-auto md:w-[120%] transform md:-translate-x-[10%] projects'
   >
-    <div
-      class='rounded-2xl bg-white h-80 border-2 overflow-hidden transition-all hover:scale-[1.01]'
-    >
-      <img
-        src='/nygreeter.png'
-        alt='New year greeter'
-        class='h-full w-full object-cover object-top'
-      />
-    </div>
-    <div
-      class='rounded-2xl bg-white h-80 border-2 overflow-hidden transition-all hover:scale-[1.01]'
-    >
-      <img
-        src='/tco.png'
-        alt='The creative oracle website'
-        class='h-full w-full object-cover object-top'
-      />
-    </div>
+    {
+      [
+        {
+          src: '/nygreeter.png',
+          alt: 'New year greeter',
+          href: 'https://newyeargreeter.vercel.app',
+        },
+        {
+          src: '/tco.png',
+          alt: 'The creative oracle website',
+          href: 'https://the-creative-oracle.netlify.app/',
+        },
+      ].map((image) => (
+        <a
+          href={image.href}
+          class='rounded-2xl h-80 border-2  cursor-pointer overflow-hidden transition-all hover:scale-[1.01]'>
+          <img
+            src={image.src}
+            alt={image.alt}
+            class='h-full w-full object-cover object-top'
+          />
+        </a>
+      ))
+    }
   </div>
 </Layout>
 
