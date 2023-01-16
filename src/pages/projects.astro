@@ -1,0 +1,61 @@
+---
+import Button from '../components/Button.astro';
+import ProjectItem from '../components/ProjectItem.astro';
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout>
+  <nav
+    class='flex flex-col gap-8 md:gap-0 md:flex-row justify-between items-center container mx-auto px-8 py-10'
+  >
+    <div class='rounded-full bg-cover overflow-hidden h-16 w-16'>
+      <img src='/me.jpg' alt='Jesswin' />
+    </div>
+
+    <div class='flex items-center gap-10 font-medium'>
+      <a href='/' class='text-secondary'>Home</a>
+      <a href='/projects' class='text-primary'>Projects</a>
+      <a href='#' class='text-secondary line-through cursor-not-allowed'>Blog</a
+      >
+      <Button class='hidden md:block' href='mailto:jesswinw@gmail.com'>
+        Say hello
+      </Button>
+      <a href='mailto:jesswinw@gmail.com' class='text-secondary md:hidden'
+        >Contact</a
+      >
+    </div>
+  </nav>
+  <main class='container mx-auto px-8'>
+    <h2 class='text-4xl font-medium my-12'>Projects</h2>
+
+    <div class='flex flex-col gap-10 projects'>
+      {
+        Array.from({ length: 10 }, (_, i) => i + 1).map((i) => (
+          <ProjectItem
+            slno='01'
+            title='ProjectClub'
+            description='Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet ducimus sequi quod beatae. Minus aperiam illum enim, sequi necessitatibus eligendi animi velit numquam, blanditiis, recusandae laborum aspernatur corrupti? Tempora, necessitatibus.'
+            repo='#'
+            demo='#'
+            class='project-item'
+          />
+        ))
+      }
+    </div>
+  </main>
+</Layout>
+
+<script is:inline>
+  var t1 = gsap.timeline();
+
+  t1.from('main', {
+    duration: 0.5,
+    y: 20,
+    opacity: 0,
+  }).from('.project-item', {
+    duration: 0.5,
+    y: 20,
+    opacity: 0,
+    stagger: 0.2,
+  });
+</script>
