@@ -1,0 +1,28 @@
+---
+export interface Props {
+  slno: number | string;
+  title: string;
+  description: string;
+  repo?: string;
+  demo?: string;
+  class?: string;
+}
+const { slno, title, description, repo, demo, class: styles } = Astro.props;
+---
+
+<div
+  class:list={[
+    'flex flex-col xl:flex-row items-start justify-between gap-1 xl:gap-10 w-full xl:w-3/4 text-primary text-xl',
+    styles,
+  ]}
+>
+  <span>{slno}</span>
+  <span>{title}</span>
+  <span class='text-base'>
+    {description}
+  </span>
+  <div class='flex items-center gap-5 text-secondary text-base'>
+    {repo && <a href={repo}>repo</a>}
+    {demo && <a href={demo}>demo</a>}
+  </div>
+</div>
