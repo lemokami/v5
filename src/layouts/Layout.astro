@@ -2,9 +2,10 @@
 import '@fontsource/poppins';
 export interface Props {
   title?: string;
+  class?: string;
 }
 
-const { title } = Astro.props;
+const { title, class: styles } = Astro.props;
 ---
 
 <!DOCTYPE html>
@@ -21,7 +22,7 @@ const { title } = Astro.props;
     ></script>
   </head>
 </html>
-<body class='text-primary overflow-y-auto md:overflow-hidden'>
+<body class:list={['text-primary', styles]}>
   <slot />
 </body>
 
