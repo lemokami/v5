@@ -3,7 +3,7 @@ import Button from '../components/Button.astro';
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout>
+<Layout class='overflow-y-auto md:overflow-hidden'>
   <nav
     class='flex flex-col gap-8 md:gap-0 md:flex-row justify-between items-center container mx-auto px-8 py-10'
   >
@@ -13,9 +13,9 @@ import Layout from '../layouts/Layout.astro';
 
     <div class='flex items-center gap-10 font-medium'>
       <a href='/' class='text-primary'>Home</a>
-      <a href='#' class='text-secondary'>Projects</a>
-      <a href='#' class='text-secondary'>Blog</a>
-      <Button class='hidden md:block' href='mailto:jesswinw@gmail.com'>
+      <a href='/projects' class='text-secondary'>Projects</a>
+      <a href='#' class='text-secondary line-through cursor-not-allowed'>Blog</a
+      ><Button class='hidden md:block' href='mailto:jesswinw@gmail.com'>
         Say hello
       </Button>
       <a href='mailto:jesswinw@gmail.com' class='text-secondary md:hidden'
@@ -100,20 +100,14 @@ import Layout from '../layouts/Layout.astro';
 <script is:inline>
   var t1 = gsap.timeline();
 
-  t1.from('nav', {
+  t1.from('main', {
     duration: 0.5,
-    y: -20,
+    y: 20,
     opacity: 0,
-  })
-    .from('main', {
-      duration: 0.5,
-      y: 20,
-      opacity: 0,
-    })
-    .from('.projects', {
-      duration: 0.5,
-      y: 20,
-      opacity: 0,
-      stagger: 0.2,
-    });
+  }).from('.projects', {
+    duration: 0.5,
+    y: 20,
+    opacity: 0,
+    stagger: 0.2,
+  });
 </script>
